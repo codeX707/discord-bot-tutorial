@@ -1,4 +1,5 @@
 import discord
+import random
 
 intents = discord.Intents.default()
 intents.members = True
@@ -50,6 +51,14 @@ async def on_message(message):
         embed.add_field(name="!uzytkownicy", value="Wyświetla ilość użytkowników na serwerze", inline=True)
         embed.set_footer(text="Więcej komend wkrótce...")
         await message.channel.send(embed=embed)
+
+    if "!losuj" in message.content:
+        text = message.content[7:]
+        response = random.randint(0,1)
+        if response == 0:
+            await message.channel.send(text + ": tak")
+        elif response == 1:
+            await message.channel.send(text + ": nie")
 
 
 @client.event
