@@ -43,6 +43,14 @@ async def on_message(message):
             if not user_in_warnings:
                 warnings_file.write(str(message.author) + "\n")
 
+    if "!help" in message.content:
+        embed = discord.Embed(title="Help", description="Lista pomocnych komend", color=0xe12d2d)
+        embed.set_thumbnail(url="https://www.lablogic.pl/wp-content/uploads/2019/03/help-button.png")
+        embed.add_field(name="!usun [liczba]", value="Usuń określoną ilość wiadomości", inline=False)
+        embed.add_field(name="!uzytkownicy", value="Wyświetla ilość użytkowników na serwerze", inline=True)
+        embed.set_footer(text="Więcej komend wkrótce...")
+        await message.channel.send(embed=embed)
+
 
 @client.event
 async def on_member_join(member):
