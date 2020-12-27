@@ -1,1 +1,0 @@
-TOKEN twoj_token
