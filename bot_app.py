@@ -24,7 +24,7 @@ async def on_message(message):
         await message.channel.send("Witaj!")
 
     if "!uzytkownicy" in message.content:
-        await message.channel.send("Liczba użytkowników na serwerze: " + server.member_count)
+        await message.channel.send("Liczba użytkowników na serwerze: " + str(server.member_count))
 
 
 @client.event
