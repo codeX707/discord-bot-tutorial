@@ -26,6 +26,23 @@ async def on_message(message):
     if "!uzytkownicy" in message.content:
         await message.channel.send("Liczba użytkowników na serwerze: " + str(server.member_count))
 
+    if "!usun" in message.content:
+        number = int(message.content.split(" ")[1])
+        async for msg in message.channel.history(limit=number):
+            await msg.delete()
+
+    if "https://discord.gg" in message.content:
+        await message.delete()
+        await message.channel.send(message.author.mention + " reklamuje inny serwer!")
+        with open("warnings.txt", "r+") as warnings_file:
+            user_in_warnings = False
+            warnings = warnings_file.readlines()
+            for warning in warnings:
+                if str(message.author) in warning:
+                    await message.author.kick()
+            if not user_in_warnings:
+                warnings_file.write(str(message.author) + "\n")
+
 
 @client.event
 async def on_member_join(member):
