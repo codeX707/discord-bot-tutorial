@@ -1,1 +1,1 @@
-TOKEN twoj_token
+twoj_token
